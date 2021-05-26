@@ -149,6 +149,11 @@ trait WithFilters
                 }
             }
 
+            // Handle 'string' filters
+            if ($filterDefinitions[$filterName]->isString()) {
+                return true;
+            }
+
             return false;
         })->toArray();
     }
@@ -180,7 +185,7 @@ trait WithFilters
      *
      * @param  string  $filter
      *
-     * @return int|string|null
+     * @return int|string|null|array
      */
     public function getFilter(string $filter)
     {

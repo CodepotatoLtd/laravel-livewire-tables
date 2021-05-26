@@ -9,6 +9,8 @@ class Filter
 {
     public const TYPE_SELECT = 'select';
 
+    public const TYPE_STRING = 'string';
+
     /**
      * @var string
      */
@@ -59,6 +61,16 @@ class Filter
     }
 
     /**
+     * @return $this
+     */
+    public function string(): Filter
+    {
+        $this->type = self::TYPE_STRING;
+
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function name(): string
@@ -80,5 +92,13 @@ class Filter
     public function isSelect(): bool
     {
         return $this->type === self::TYPE_SELECT;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isString(): bool
+    {
+        return $this->type === self::TYPE_STRING;
     }
 }

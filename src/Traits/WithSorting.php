@@ -15,6 +15,8 @@ trait WithSorting
     public array $sorts = [];
     public array $sortNames = [];
     public array $sortDirectionNames = [];
+    public string $defaultSortColumn;
+    public string $defaultSortColumnDirection = 'asc';
 
     public function sortBy(string $field): ?string
     {
@@ -48,6 +50,10 @@ trait WithSorting
             } else {
                 $query->orderBy($field, $direction);
             }
+        }
+
+        if ($this->defaultSortColumn) {
+            return $query->orderBy($this->defaultSortColumn, $this->defaultSortColumnDirection);
         }
 
         return $query;
