@@ -30,6 +30,16 @@ trait WithSearch
     public ?bool $searchFilterLazy = null;
 
     /**
+     * Update the selected page rows when changing search parameter
+     */
+    public function updatedFiltersSearch(): void
+    {
+        if ($this->selectPage) {
+            $this->selectPageRows();
+        }
+    }
+
+    /**
      * Clear the search filter specifically
      */
     public function resetSearch(): void
