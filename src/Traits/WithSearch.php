@@ -15,6 +15,13 @@ trait WithSearch
     public bool $showSearch = true;
 
     /**
+     * Search placeholder
+     *
+     * @var string
+     */
+    public string $searchPlaceholder;
+
+    /**
      * @var int|null
      */
     public ?int $searchFilterDebounce = null;

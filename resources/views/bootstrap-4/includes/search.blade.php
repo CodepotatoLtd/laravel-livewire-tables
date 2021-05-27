@@ -2,7 +2,7 @@
     <div class="mb-3 mb-md-0 input-group">
         <input
             wire:model{{ $this->searchFilterOptions }}="filters.search"
-            placeholder="{{ __('Search') }}"
+            placeholder="{{ $searchPlaceholder ?? __('Search') }}"
             type="text"
             class="form-control"
         >
