@@ -15,7 +15,7 @@ trait WithSorting
     public array $sorts = [];
     public array $sortNames = [];
     public array $sortDirectionNames = [];
-    public string $defaultSortColumn;
+    public string $defaultSortColumn = '';
     public string $defaultSortColumnDirection = 'asc';
 
     public function sortBy(string $field): ?string
