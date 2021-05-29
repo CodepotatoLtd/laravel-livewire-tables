@@ -17,6 +17,7 @@ trait WithSorting
     public array $sortDirectionNames = [];
     public string $defaultSortColumn = '';
     public string $defaultSortColumnDirection = 'asc';
+    public string $prioritiseColumnsWhenSearching = '';
 
     public function sortBy(string $field): ?string
     {
@@ -50,6 +51,12 @@ trait WithSorting
             } else {
                 $query->orderBy($field, $direction);
             }
+        }
+
+        if ($this->filters['search'] && $this->prioritiseColumnsWhenSearching) {
+            $searchTerm = $this->filters['search'];
+            $columns = $this->prioritiseColumnsWhenSearching;
+            return $query->orderByRaw("MATCH ($columns) AGAINST ('$searchTerm') DESC");
         }
 
         if ($this->defaultSortColumn) {
