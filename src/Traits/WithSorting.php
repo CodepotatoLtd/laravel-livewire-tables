@@ -53,7 +53,7 @@ trait WithSorting
             }
         }
 
-        if ($this->filters['search'] && $this->prioritiseColumnsWhenSearching) {
+        if (isset($this->filters['search']) && $this->prioritiseColumnsWhenSearching) {
             $searchTerm = $this->filters['search'];
             $columns = $this->prioritiseColumnsWhenSearching;
             return $query->orderByRaw("MATCH ($columns) AGAINST ('$searchTerm') DESC");
