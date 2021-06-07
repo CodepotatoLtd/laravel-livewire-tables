@@ -16,7 +16,7 @@ trait WithSorting
     public array $sortNames = [];
     public array $sortDirectionNames = [];
     public string $defaultSortColumn = '';
-    public string $defaultSortColumnDirection = 'asc';
+    public string $defaultSortDirection = 'asc';
     public string $prioritiseColumnsWhenSearching = '';
 
     public function sortBy(string $field): ?string
@@ -45,6 +45,10 @@ trait WithSorting
      */
     public function applySorting($query)
     {
+        if (! empty($this->defaultSortColumn) && ! count($this->sorts)) {
+            return $query->orderBy($this->defaultSortColumn, $this->defaultSortDirection);
+        }
+
         foreach ($this->sorts as $field => $direction) {
             if (optional($this->getColumn($field))->hasSortCallback()) {
                 $query = app()->call($this->getColumn($field)->getSortCallback(), ['query' => $query, 'direction' => $direction]);
