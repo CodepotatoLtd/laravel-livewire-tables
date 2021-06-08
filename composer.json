@@ -1,5 +1,5 @@
 {
-    "name": "rappasoft/laravel-livewire-tables",
+    "name": "codepotatoltd/laravel-livewire-tables",
     "description": "A dynamic table component for Laravel Livewire",
     "keywords": [
         "rappasoft",
@@ -8,7 +8,7 @@
         "tables",
         "laravel"
     ],
-    "homepage": "https://github.com/rappasoft/laravel-livewire-tables",
+    "homepage": "https://github.com/codepotatoltd/laravel-livewire-tables",
     "license": "MIT",
     "authors": [
         {
