@@ -63,10 +63,6 @@ trait WithSorting
             return $query->orderByRaw("MATCH ($columns) AGAINST ('$searchTerm') DESC");
         }
 
-        if ($this->defaultSortColumn) {
-            return $query->orderBy($this->defaultSortColumn, $this->defaultSortColumnDirection);
-        }
-
         return $query;
     }
 
